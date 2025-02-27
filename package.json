@@ -1,0 +1,46 @@
+{
+  "name": "adset-service",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kayeer <boloto.hub@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@nestjs-modules/ioredis": "^2.0.2",
+    "@nestjs/common": "^11.0.10",
+    "@nestjs/config": "^4.0.0",
+    "@nestjs/core": "^11.0.10",
+    "@nestjs/platform-express": "^11.0.10",
+    "@nestjs/typeorm": "^11.0.0",
+    "@types/ioredis": "^4.0.4",
+    "@types/uuid": "^3.4.4",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.7",
+    "ioredis": "^5.5.0",
+    "pg": "^8.13.3",
+    "rxjs": "^7.8.2",
+    "typeorm": "^0.3.20"
+  },
+  "scripts": {
+    "build": "nest build",
+    "start": "nest build && nest start",
+    "start:dev": "rm -rf dist && nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "migration:create": "yarn run build && yarn run typeorm migration:create --dataSource dist/config/ormconfig.js",
+    "migration:generate": "yarn run build && yarn run typeorm migration:generate src/database/migrations/$npm_config_MIGRATION_NAME --dataSource dist/config/ormconfig.js",
+    "migration:run": "yarn run build && yarn run typeorm migration:run --dataSource dist/config/ormconfig.js",
+    "migration:show": "yarn run typeorm migration:show --dataSource dist/config/ormconfig.js",
+    "migration:down": "yarn run typeorm migration:revert --dataSource dist/config/ormconfig.js",
+    "migration:dropAll": "npm run typeorm schema:drop --dataSource dist/config/ormconfig.js"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.5",
+    "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
+    "eslint": "^9.21.0",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.7.3"
+  }
+}
